@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.yufei.bean">
+    <class name="Department" table="tb_department">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="departName" column="departName" length="50" type="string"/>
+        <property name="address" column="address"/>
+        <!--
+           set标签配置一对多关联关系，属性：
+               name:表示所关联的一方在本类中的引用名称
+               inverse：表示关联关系在数据库中的外键由谁维护，
+                     值：false 自己维护
+                         true  对方维护
+       -->
+        <!--
+                    set标签配置一对多关联关系，有以下几个属性：
+                    1、name：表示所关联的方对在本类中的引用名称。
+                    2、inverse：表示关联关系在数据库中的外键由谁来维护，值为false自己维护，值为true对方维护
+                -->
+        <set name="emps" inverse="true">
+            <!--
+                key标签用于配置外键，有以下属性：
+                1、column：指定外键名称
+            -->
+            <key column="departId" />
+            <!--
+                one-to-many标签配置一对多关联关系，有以下属性：
+                1、class：当前类所关联的类的完整名称
+            -->
+            <one-to-many class="Employee"/>
+        </set>
+    </class>
+</hibernate-mapping>

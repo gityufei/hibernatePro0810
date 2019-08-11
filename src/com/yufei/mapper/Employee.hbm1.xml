@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.yufei.bean">
+    <class name="Employee" table="tb_employee">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name"/>
+        <property name="joinTime" column="joinTime"/>
+        <property name="job"/>
+        <property name="salary"/>
+        <!--
+            many-to-one 标签用于配置多对一关联关系 属性：
+                name:关联关系的引用名称
+                column:指定外键名称
+                class:被关联类的完整名称
+        -->
+        <many-to-one name="depart" column="departId" class="Department"/>
+      </class>
+</hibernate-mapping>

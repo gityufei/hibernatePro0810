@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping package="com.yufei.bean">
+      <class name="Student" table="student">
+        <id name="id" column="id">
+          <generator class="native"/>
+        </id>
+        <property name="name" column="name" length="50" type="string"/>
+        <!--
+			set标签配置多对多关联关系：
+			1、name：指向的是被关联的属性名称
+			2、inverse：外键的维护，false自己维护，true对方维护
+			        外键维护：外键指定方维护（有set集合）
+			       维护时机：在set集合add()数据时维护，故只有在维护方set集合add()时才能维护中间表(生成或更新)
+			3、table：指定多对多关联关系的中间表的名称
+		-->
+		<set name="teas" inverse="false" table="tb_tea_stu">
+		  <!--
+				key标签用于指定当前类在中间表的外键
+				1、column：指定外键名称
+			-->
+		  <key column="sid"/>
+		   <!--
+				many-to-many标签用于配置多对多关系
+				1、class：指定被关联的类的完整名称
+				2、column：被关联对象在中间表的外键名称
+		    -->
+		    <many-to-many class="Teacher" column="tid"/>
+		</set>
+      </class>
+    </hibernate-mapping>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

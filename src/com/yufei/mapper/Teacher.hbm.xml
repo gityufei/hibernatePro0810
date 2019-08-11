@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping package="com.yufei.bean">
+      <class name="Teacher" table="teacher">
+        <id name="id" column="id">
+          <generator class="native"/>
+        </id>
+        <property name="name" column="name" length="50" type="string"/>
+        <!--
+			set标签配置多对多关联关系：
+			1、name：指向的是被关联的属性名称
+			2、inverse：外键的维护，false自己维护，true对方维护
+			3、table：指定多对多关联关系的中间表的名称
+			4、cascade：是否级联操作，有如下几个值：
+				1> none：不级联
+				2> save-update：保存和更新级联
+				3> delete：删除时级联
+				4> all：都（保存、更新、删除）级联
+		-->
+		<set name="stus" inverse="true" table="tb_tea_stu" cascade="save-update">
+		  <!--
+				key标签用于指定当前类在中间表的外键
+				1、column：指定外键名称
+			-->
+			<key column="tid"/>
+			<!--
+				many-to-many标签用于配置多对多关系
+				1、class：指定被关联的类的完整名称
+				2、column：被关联对象在中间表的外键名称
+			-->
+			<many-to-many class="Student" column="sid"></many-to-many>
+		</set>
+      </class>
+    </hibernate-mapping>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

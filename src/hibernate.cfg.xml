@@ -43,6 +43,8 @@
     -->
     <mapping resource="com/yufei/mapper/Department.hbm.xml"/>
     <mapping resource="com/yufei/mapper/Employee.hbm.xml"/>
+    <mapping resource="com/yufei/mapper/Teacher.hbm.xml" />
+    <mapping resource="com/yufei/mapper/Student.hbm.xml" />
 
   </session-factory>
 </hibernate-configuration>
